@@ -7,4 +7,23 @@ projects:
       remotes:
         origin: 'https://github.com/Bolodya1997/project-test.git'
     name: project-test
-components: []
+components:
+  - name: editor-selector
+    container:
+      image: ubuntu:latest
+      command:
+        - 'bash'
+        - '-c'
+        - |
+          mkdir -p ${PROJECT_SOURCE}/.che ;
+          echo "---
+          id: che-incubator/che-idea/latest
+          " > ${PROJECT_SOURCE}/.che/che-editor.yaml
+      mountSources: true
+commands:
+  - id: editor-selector-command
+    apply:
+      component: editor-selector
+events:
+  preStart:
+    - editor-selector-command

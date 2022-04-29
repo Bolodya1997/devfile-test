@@ -1,7 +1,7 @@
 ---
-schemaVersion: 2.1.0
 inline:
-  metadata:
+    schemaVersion: 2.1.0
+    metadata:
       name: che-incubator/che-idea/latest
       displayName: IntelliJ IDEA Community Edition
       description: IntelliJ IDEA Community running using Projector (latest released version)
@@ -13,14 +13,14 @@ inline:
         repository: 'https://github.com/che-incubator/jetbrains-editor-images'
         firstPublicationDate: '2022-01-11'
         skipMetaYaml: true
-  commands:
+    commands:
       - id: init-container-command
         apply:
           component: che-idea-injector
-  events:
+    events:
       preStart:
         - init-container-command
-  components:
+    components:
       - name: che-idea-runtime-description
         container:
           image: 'quay.io/devfile/universal-developer-image:ubi8-0e189d9'

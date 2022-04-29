@@ -2,4 +2,9 @@ schemaVersion: 2.1.0
 metadata:
   name: test
   namespace: admin-che
+projects:  
+  - git:
+      remotes:
+        origin: 'https://github.com/Bolodya1997/project-test.git'
+    name: project-test
 components: []

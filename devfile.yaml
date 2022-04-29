@@ -12,12 +12,22 @@ components:
     container:
       image: ubuntu:latest
       command:
-        - 'bash'
+        - bash
         - '-c'
         - |
           mkdir -p ${PROJECT_SOURCE}/.che ;
           echo "---
           id: che-incubator/che-idea/latest
+          override:
+            containers:
+              name: che-idea-runtime-description
+              env:
+                - name: PROJECTOR_ASSEMBLY_DIR
+                  value: /projector
+                - name: PROJECTOR_CONFIG_DIR
+                  value: /home/user/.jetbrains
+                - name: TEST_ENV
+                  value: test - value
           " > ${PROJECT_SOURCE}/.che/che-editor.yaml
       mountSources: true
 commands:

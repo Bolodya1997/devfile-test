@@ -17,10 +17,10 @@ components:
         - |
           mkdir -p ${PROJECT_SOURCE}/.che ;
           echo "---
-          id: che-incubator/che-idea/latest
+          id: che-incubator/che-pycharm/latest
           override:
             containers:
-              name: che-idea-runtime-description
+              name: che-pycharm-runtime-description
               env:
                 - name: PROJECTOR_ASSEMBLY_DIR
                   value: /projector

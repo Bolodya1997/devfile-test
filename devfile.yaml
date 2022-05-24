@@ -7,3 +7,4 @@ projects:
         origin: 'http://gitlab.xored.local/vladimir.popov/devfile-test'
     name: project-test
 components: []
+

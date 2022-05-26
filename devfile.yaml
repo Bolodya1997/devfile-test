@@ -46,7 +46,7 @@ commands:
 components:
   - name: k8s-client
     container:
-      image: curlimages/curl:latest
+      image: cosmintitei/bash-curl:latest
       command: ['sleep', 'infinity']
   - name: git-credentials-gitlab
     kubernetes:

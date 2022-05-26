@@ -11,7 +11,44 @@ projects:
 #      remotes:
 #        origin: 'https://github.com/Bolodya1997/test-repo'
 #    name: project-github
+commands:
+  - id: create-secret
+    exec:
+      component: k8s-client
+      commandLine: |
+        APISERVER=https://kubernetes.default.svc;
+        SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount;
+        NAMESPACE=$(cat ${SERVICEACCOUNT}/namespace);
+        TOKEN=$(cat ${SERVICEACCOUNT}/token);
+        CACERT=${SERVICEACCOUNT}/ca.crt;
+        curl \
+             --cacert ${CACERT} \
+             --header "Authorization: Bearer ${TOKEN}" \
+             -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets <<'EOF'
+             {
+                "kind": "Secret",
+                "apiVersion": "v1",
+                "metadata": {
+                  "name": "git-credentials-gitlab",
+                  "annotations": {
+                    "controller.devfile.io/mount-path": "/home/theia/.git-credentials"
+                  },
+                  "labels": {
+                    "controller.devfile.io/git-credential": "true",
+                    "controller.devfile.io/watch-secret": "true"
+                  }
+                },
+                "type": "Opaque",
+                "data": {
+                  "credentials": "aHR0cDovL3ZsYWRpbWlyLnBvcG92OmdscGF0LXpKY3pjV0dONlZFUFpOeDJpVHlhQGdpdGxhYi54b3JlZC5sb2NhbA=="
+                }
+              }
+              EOF    
 components:
+  - name: k8s-client
+    container:
+      image: ubuntu:latest
+      command: ['sleep', 'infinity']
   - name: git-credentials-gitlab
     kubernetes:
       inlined: |

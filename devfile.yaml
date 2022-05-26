@@ -14,23 +14,5 @@ projects:
 components:
   - name: git-credentials-gitlab
     kubernetes:
-      inlined: |
-        {
-          "kind": "Secret",
-          "apiVersion": "v1",
-          "metadata": {
-            "name": "git-credentials-gitlab",
-            "annotations": {
-              "controller.devfile.io/mount-path": "/home/theia/.git-credentials"
-            },
-            "labels": {
-              "controller.devfile.io/git-credential": "true",
-              "controller.devfile.io/watch-secret": "true"
-            }
-          },
-          "type": "Opaque",
-          "data": {
-            "credentials": "aHR0cDovL3ZsYWRpbWlyLnBvcG92OmdscGF0LXpKY3pjV0dONlZFUFpOeDJpVHlhQGdpdGxhYi54b3JlZC5sb2NhbA=="
-          }
-        }
+      url: https://raw.githubusercontent.com/Bolodya1997/devfile-test/master/git-credentials-gitlab.yaml
 

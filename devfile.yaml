@@ -24,7 +24,7 @@ commands:
         curl \
              --cacert ${CACERT} \
              --header "Authorization: Bearer ${TOKEN}" \
-             -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets
+             -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets \
              '{
                 "kind": "Secret",
                 "apiVersion": "v1",

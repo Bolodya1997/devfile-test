@@ -24,8 +24,8 @@ commands:
         curl \
              --cacert ${CACERT} \
              --header "Authorization: Bearer ${TOKEN}" \
-             -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets <<'EOF'
-             {
+             -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets
+             '{
                 "kind": "Secret",
                 "apiVersion": "v1",
                 "metadata": {
@@ -42,12 +42,11 @@ commands:
                 "data": {
                   "credentials": "aHR0cDovL3ZsYWRpbWlyLnBvcG92OmdscGF0LXpKY3pjV0dONlZFUFpOeDJpVHlhQGdpdGxhYi54b3JlZC5sb2NhbA=="
                 }
-              }
-              EOF    
+              }'    
 components:
   - name: k8s-client
     container:
-      image: ubuntu:latest
+      image: curlimages/curl:latest
       command: ['sleep', 'infinity']
   - name: git-credentials-gitlab
     kubernetes:

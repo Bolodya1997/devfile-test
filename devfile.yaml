@@ -47,7 +47,7 @@ components:
   - name: k8s-client
     container:
       image: cosmintitei/bash-curl:latest
-      command: ['sleep', 'infinity']
+      command: ['sleep', '60m']
   - name: git-credentials-gitlab
     kubernetes:
       inlined: |

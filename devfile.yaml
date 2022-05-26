@@ -26,7 +26,7 @@ commands:
              --header "Authorization: Bearer ${TOKEN}" \
              --header "Content-Type: application/json" \
              -X POST ${APISERVER}/api/v1/namespaces/${NAMESPACE}/secrets \
-             '{
+             -d '{
                 "kind": "Secret",
                 "apiVersion": "v1",
                 "metadata": {

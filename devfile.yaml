@@ -13,8 +13,6 @@ projects:
 #    name: project-github
 components:
   - name: git-credentials-gitlab
-    kubernetes:components:
-  - name: git-credentials-gitlab
     kubernetes:
       inlined: |
         {

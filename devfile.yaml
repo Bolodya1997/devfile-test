@@ -6,9 +6,25 @@ projects:
       remotes:
         origin: 'http://gitlab.xored.local/vladimir.popov/devfile-test'
     name: project-gitlab
-  - git:
-      remotes:
-        origin: 'https://github.com/Bolodya1997/test-repo'
-    name: project-github
-components: []
+#  - git:
+#      remotes:
+#        origin: 'https://github.com/Bolodya1997/test-repo'
+#    name: project-github
+components:
+  - name: git-credentials-gitlab
+    kubernetes:
+      inlined: |
+        kind: Secret
+        apiVersion: v1
+        metadata:
+          name: git-credentials-gitlab
+          namespace: vladimir-popov-xored-com-che-bdvkcs
+          annotations:
+            controller.devfile.io/mount-path: /home/theia/.git-credentials
+          labels:
+            controller.devfile.io/git-credential: "true"
+            controller.devfile.io/watch-secret: "true"
+        type: Opaque
+        data:
+          credentials: aHR0cDovL3ZsYWRpbWlyLnBvcG92OmdscGF0LXpKY3pjV0dONlZFUFpOeDJpVHlhQGdpdGxhYi54b3JlZC5sb2NhbA==
 

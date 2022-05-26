@@ -18,7 +18,6 @@ components:
         apiVersion: v1
         metadata:
           name: git-credentials-gitlab
-          namespace: vladimir-popov-xored-com-che-bdvkcs
           annotations:
             controller.devfile.io/mount-path: /home/theia/.git-credentials
           labels:

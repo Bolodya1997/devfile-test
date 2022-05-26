@@ -14,5 +14,5 @@ projects:
 components:
   - name: git-credentials-gitlab
     kubernetes:
-      url: https://raw.githubusercontent.com/Bolodya1997/devfile-test/master/git-credentials-gitlab.yaml
+      uri: https://raw.githubusercontent.com/Bolodya1997/devfile-test/master/git-credentials-gitlab.yaml
 

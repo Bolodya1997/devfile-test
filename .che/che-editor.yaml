@@ -3,7 +3,7 @@ id: eclipse/che-theia/latest
 override:
   containers:
     - name: theia-ide
-      image: registry.kubesystem/velocity-ide:latest
+      image: registry.kube-system/velocity-ide:latest
       env:
         - name: CUSTOM_ENV
           value: custom-value

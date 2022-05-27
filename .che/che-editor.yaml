@@ -3,6 +3,7 @@ id: eclipse/che-theia/latest
 override:
   containers:
     - name: theia-ide
+      image: rrandom312/che-theia:latest
       env:
         - name: CUSTOM_ENV
           value: custom-value

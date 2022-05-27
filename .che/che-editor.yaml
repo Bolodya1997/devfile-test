@@ -1,0 +1,8 @@
+---
+id: che-incubator/che-idea/latest
+override:
+  containers:
+    - name: theia-ide
+      env:
+        - name: CUSTOM_ENV
+          value: custom-value

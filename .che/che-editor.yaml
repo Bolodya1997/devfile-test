@@ -1,5 +1,5 @@
 ---
-id: che-incubator/che-idea/latest
+id: che-incubator/che-theia/latest
 override:
   containers:
     - name: theia-ide

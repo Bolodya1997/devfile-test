@@ -3,7 +3,7 @@ id: eclipse/che-theia/latest
 override:
   containers:
     - name: theia-ide
-      image: localhost:5000/velocity-ide:latest
+      image: ubuntupopov.xored.local:5000/velocity-ide:latest
       env:
         - name: CUSTOM_ENV
           value: custom-value

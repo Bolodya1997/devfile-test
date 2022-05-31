@@ -10,5 +10,5 @@ projects:
   - git:
       remotes:
         origin: 'https://github.com/robotframework/RobotDemo.git'
-    name: RobotDemo
+    name: robot-demo
 commands: []

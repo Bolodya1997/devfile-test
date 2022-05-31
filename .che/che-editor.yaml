@@ -22,7 +22,7 @@ inline:
           - name: plugins
             path: /plugins
           - name: theia-local
-            path: /home/theia/.theia
+            path: /opt/app-root/src/.theia
         mountSources: true
         memoryLimit: 512M
         cpuLimit: 1500m

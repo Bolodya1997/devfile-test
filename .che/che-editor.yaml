@@ -10,7 +10,7 @@ inline:
       exec:
         component: theia-ide
         commandLine: |
-          echo '{
+          ls /opt/app-root/src/.theia/settings.json || echo '{
             "debug.internalConsoleOptions": "neverOpen",
             "python.linting.pylintEnabled": true,
             "python.defaultInterpreterPath": "/opt/app-root/bin/python"

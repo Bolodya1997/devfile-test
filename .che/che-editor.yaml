@@ -1,4 +1,8 @@
 inline:
+  schemaVersion: 2.1.0
+  metadata:
+    name: spirent/velocity-ide-https/latest
+    displayName: velocity-ide
   commands:
     - id: init-remote-runtime-injector
       apply:

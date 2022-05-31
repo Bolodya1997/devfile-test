@@ -7,8 +7,8 @@ projects:
       remotes:
         origin: 'http://gitlab.xored.local/vladimir.popov/devfile-test'
     name: project-gitlab
-#  - git:
-#      remotes:
-#        origin: 'https://github.com/Bolodya1997/test-repo'
-#    name: project-github
+  - git:
+      remotes:
+        origin: 'https://github.com/robotframework/RobotDemo.git'
+    name: RobotDemo
 commands: []

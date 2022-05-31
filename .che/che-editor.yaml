@@ -5,7 +5,5 @@ override:
     - name: theia-ide
       image: ubuntupopov.xored.local:5000/velocity-ide-https:latest
       env:
-        - name: CUSTOM_ENV
-          value: custom-value
         - name: IDE_FLEXLM_LICENSE_SERVER
           value: 27000@192.168.9.39

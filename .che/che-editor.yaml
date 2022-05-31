@@ -6,9 +6,20 @@ inline:
     - id: init-remote-runtime-injector
       apply:
         component: remote-runtime-injector
+    - id: prepare-default-settings
+      exec:
+        component: theia-ide
+        commandLine: |
+          echo '{
+            "debug.internalConsoleOptions": "neverOpen",
+            "python.linting.pylintEnabled": true,
+            "python.defaultInterpreterPath": "/opt/app-root/bin/python"
+          }' > /opt/app-root/src/.theia/settings.json
   events:
     preStart:
       - init-remote-runtime-injector
+    postStart:
+      - prepare-default-settings
   components:
     - name: theia-ide
       container:

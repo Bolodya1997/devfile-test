@@ -12,3 +12,116 @@ projects:
         origin: 'https://github.com/robotframework/RobotDemo.git'
     name: robot-demo
 commands: []
+attributes:
+  'che-editor.yaml':
+    schemaVersion: 2.1.0
+    metadata:
+      name: velocity-ide
+    commands:
+      - id: init-remote-runtime-injector
+        apply:
+          component: remote-runtime-injector
+      - id: prepare-default-settings
+        exec:
+          component: theia-ide
+          commandLine: |
+            ls /opt/app-root/src/.theia/settings.json || echo '{
+              "debug.internalConsoleOptions": "neverOpen",
+              "python.linting.pylintEnabled": true,
+              "python.defaultInterpreterPath": "/opt/app-root/bin/python"
+            }' > /opt/app-root/src/.theia/settings.json
+    events:
+      preStart:
+        - init-remote-runtime-injector
+      postStart:
+        - prepare-default-settings
+    components:
+      - name: theia-ide
+        container:
+          image: 'ubuntupopov.xored.local:5000/velocity-ide-https:latest'
+          env:
+            - name: THEIA_PLUGINS
+              value: 'local-dir:///plugins'
+            - name: IDE_FLEXLM_LICENSE_SERVER
+              value: 27000@192.168.9.39
+          volumeMounts:
+            - name: plugins
+              path: /plugins
+            - name: theia-local
+              path: /opt/app-root/src/.theia
+          mountSources: true
+          memoryLimit: 512M
+          cpuLimit: 1500m
+          cpuRequest: 100m
+          endpoints:
+            - name: theia
+              exposure: public
+              secure: true
+              targetPort: 3100
+              attributes:
+                type: main
+                cookiesAuthEnabled: true
+                discoverable: false
+                urlRewriteSupported: true
+              protocol: http
+        attributes:
+          app.kubernetes.io/component: che-theia
+          app.kubernetes.io/part-of: che-theia.eclipse.org
+          ports:
+            - exposedPort: 3100
+      - name: plugins
+        volume: {}
+      - name: theia-local
+        volume: {}
+      - name: che-machine-exec
+        container:
+          image: 'quay.io/eclipse/che-machine-exec:next'
+          memoryLimit: 128Mi
+          memoryRequest: 32Mi
+          cpuLimit: 500m
+          cpuRequest: 30m
+          command:
+            - /go/bin/che-machine-exec
+            - '--url'
+            - '127.0.0.1:3333'
+            - '--idle-timeout'
+            - '15m'
+          endpoints:
+            - name: terminal
+              targetPort: 3333
+              exposure: public
+              secure: true
+              protocol: ws
+              attributes:
+                type: collocated-terminal
+                discoverable: false
+                cookiesAuthEnabled: true
+                urlRewriteSupported: true
+          attributes:
+            app.kubernetes.io/component: machine-exec
+            app.kubernetes.io/part-of: che-theia.eclipse.org
+            ports:
+              - exposedPort: 3333
+      - name: remote-runtime-injector
+        attributes:
+          app.kubernetes.io/component: remote-runtime-injector
+          app.kubernetes.io/part-of: che-theia.eclipse.org
+        container:
+          image: 'quay.io/eclipse/che-theia-endpoint-runtime-binary:next'
+          memoryLimit: 128Mi
+          memoryRequest: 32Mi
+          cpuLimit: 500m
+          cpuRequest: 30m
+          env:
+            - name: PLUGIN_REMOTE_ENDPOINT_EXECUTABLE
+              value: /remote-endpoint/plugin-remote-endpoint
+            - name: REMOTE_ENDPOINT_VOLUME_NAME
+              value: remote-endpoint
+          volumeMounts:
+            - name: plugins
+              path: /plugins
+            - name: remote-endpoint
+              path: /remote-endpoint
+      - name: remote-endpoint
+        volume:
+          ephemeral: true

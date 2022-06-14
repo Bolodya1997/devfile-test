@@ -5,7 +5,7 @@ metadata:
 projects:  
   - git:
       remotes:
-        origin: 'http://gitlab.xored.local/vladimir.popov/devfile-test'
+        origin: 'https://git-ito.spirenteng.com/velocity/ide/workspace-management.git'
     name: project-gitlab
   - git:
       remotes:

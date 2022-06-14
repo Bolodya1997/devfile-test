@@ -13,7 +13,7 @@ projects:
     name: robot-demo
 commands: []
 attributes:
-  'che-editor.yaml': |
+  'che-editor-aaaa.yaml-aaaa': |
     schemaVersion: 2.1.0
     metadata:
       name: velocity-ide

@@ -1,6 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
-  name: test-che
+  name: test-ide
   version: 2.1.0
 projects:  
   - git:
@@ -13,7 +13,7 @@ projects:
     name: robot-demo
 commands: []
 attributes:
-  '---che-editor.yaml': |
+  'che-editor.yaml': |
     schemaVersion: 2.1.0
     metadata:
       name: velocity-ide

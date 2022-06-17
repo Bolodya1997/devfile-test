@@ -13,7 +13,7 @@ projects:
     name: robot-demo
 commands: []
 attributes:
-  'che-editor-aaaa.yaml-aaaa': |
+  'che-editor.yaml': |
     schemaVersion: 2.1.0
     metadata:
       name: velocity-ide
@@ -38,7 +38,7 @@ attributes:
     components:
       - name: theia-ide
         container:
-          image: 'ubuntupopov.xored.local:5000/velocity-ide-https:latest'
+          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-1'
           env:
             - name: THEIA_PLUGINS
               value: 'local-dir:///plugins'

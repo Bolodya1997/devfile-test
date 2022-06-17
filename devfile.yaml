@@ -1,6 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
-  name: test-2
+  name: test-che
   version: 2.1.0
 projects:  
   - git:

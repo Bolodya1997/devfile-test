@@ -43,7 +43,7 @@ attributes:
             - name: THEIA_PLUGINS
               value: 'local-dir:///plugins'
             - name: IDE_FLEXLM_LICENSE_SERVER
-              value: 27000@192.168.9.39
+              value: 27000@englshost.spirenteng.com
           volumeMounts:
             - name: plugins
               path: /plugins

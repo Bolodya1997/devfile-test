@@ -13,10 +13,6 @@ projects:
     name: robot-demo
 commands: []
 attributes:
-  'che-theia.eclipse.org/vscode-preferences':
-    'debug.internalConsoleOptions': 'neverOpen'
-    'python.linting.pylintEnabled': true
-    'python.defaultInterpreterPath': '/opt/app-root/bin/python'
   'che-editor.yaml': |
     schemaVersion: 2.1.0
     metadata:
@@ -95,6 +91,10 @@ attributes:
           app.kubernetes.io/part-of: che-theia.eclipse.org
           ports:
             - exposedPort: 3100
+          che-theia.eclipse.org/vscode-preferences:
+            debug.internalConsoleOptions: 'neverOpen'
+            python.linting.pylintEnabled: true
+            python.defaultInterpreterPath: '/opt/app-root/bin/python'
       - name: plugins
         volume: {}
       - name: theia-local

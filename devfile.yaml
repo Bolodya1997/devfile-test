@@ -13,6 +13,10 @@ projects:
     name: robot-demo
 commands: []
 attributes:
+  'che-theia.eclipse.org/vscode-preferences':
+    'debug.internalConsoleOptions': 'neverOpen'
+    'python.linting.pylintEnabled': true
+    'python.defaultInterpreterPath': '/opt/app-root/bin/python'
   'che-editor.yaml': |
     schemaVersion: 2.1.0
     metadata:

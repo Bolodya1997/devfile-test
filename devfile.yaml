@@ -2,11 +2,7 @@ schemaVersion: 2.1.0
 metadata:
   name: test
   version: 2.1.0
-projects:  
-  - git:
-      remotes:
-        origin: 'https://git-ito.spirenteng.com/velocity/ide/workspace-management.git'
-    name: project-gitlab
+projects:
   - git:
       remotes:
         origin: 'https://github.com/robotframework/RobotDemo.git'

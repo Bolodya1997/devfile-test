@@ -75,7 +75,7 @@ attributes:
         volume: {}
       - name: che-machine-exec
         container:
-          image: 'quay.io/eclipse/che-machine-exec:next'
+          image: 'quay.io/eclipse/che-machine-exec:latest'
           memoryLimit: 128Mi
           memoryRequest: 32Mi
           cpuLimit: 500m
@@ -107,7 +107,7 @@ attributes:
           app.kubernetes.io/component: remote-runtime-injector
           app.kubernetes.io/part-of: che-theia.eclipse.org
         container:
-          image: 'quay.io/eclipse/che-theia-endpoint-runtime-binary:next'
+          image: 'quay.io/eclipse/che-theia-endpoint-runtime-binary:latest'
           memoryLimit: 128Mi
           memoryRequest: 32Mi
           cpuLimit: 500m

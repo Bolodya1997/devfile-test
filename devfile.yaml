@@ -96,11 +96,11 @@ attributes:
                 discoverable: false
                 cookiesAuthEnabled: true
                 urlRewriteSupported: true
-          attributes:
-            app.kubernetes.io/component: machine-exec
-            app.kubernetes.io/part-of: che-theia.eclipse.org
-            ports:
-              - exposedPort: 3333
+        attributes:
+          app.kubernetes.io/component: machine-exec
+          app.kubernetes.io/part-of: che-theia.eclipse.org
+          ports:
+            - exposedPort: 3333
       - name: remote-runtime-injector
         attributes:
           app.kubernetes.io/component: remote-runtime-injector

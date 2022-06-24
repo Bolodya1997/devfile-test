@@ -34,16 +34,12 @@ attributes:
     components:
       - name: theia-ide
         container:
-          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-10'
+          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-11'
           env:
             - name: THEIA_PLUGINS
               value: 'local-dir:///plugins'
             - name: IDE_FLEXLM_LICENSE_SERVER
               value: 27000@englshost.spirenteng.com
-            - name: THEIA_MINI_BROWSER_HOST_PATTERN
-              value: ''
-            - name: THEIA_WEBVIEW_EXTERNAL_ENDPOINT
-              value: ''
           volumeMounts:
             - name: plugins
               path: /plugins

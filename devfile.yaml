@@ -72,6 +72,9 @@ attributes:
       - name: che-machine-exec
         container:
           image: 'quay.io/eclipse/che-machine-exec:next'
+          env:
+            - name: LOG_LEVEL
+              value: DEBUG
           memoryLimit: 128Mi
           memoryRequest: 32Mi
           cpuLimit: 500m

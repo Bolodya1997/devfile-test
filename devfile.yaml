@@ -40,6 +40,10 @@ attributes:
               value: 'local-dir:///plugins'
             - name: IDE_FLEXLM_LICENSE_SERVER
               value: 27000@englshost.spirenteng.com
+            - name: THEIA_MINI_BROWSER_HOST_PATTERN
+              value: ''
+            - name: THEIA_WEBVIEW_EXTERNAL_ENDPOINT
+              value: ''
           volumeMounts:
             - name: plugins
               path: /plugins

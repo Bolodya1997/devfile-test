@@ -64,11 +64,66 @@ attributes:
                 discoverable: false
                 urlRewriteSupported: true
               protocol: http
+            - name: webviews
+              targetPort: 3100
+              exposure: public
+              secure: true
+              protocol: http
+              attributes:
+                type: webview
+                cookiesAuthEnabled: true
+                discoverable: false
+                unique: true
+                urlRewriteSupported: true
+            - name: mini-browser
+              targetPort: 3100
+              exposure: public
+              secure: true
+              protocol: http
+              attributes:
+                type: mini-browser
+                cookiesAuthEnabled: true
+                discoverable: false
+                unique: true
+                urlRewriteSupported: true
+            - name: theia-dev
+              targetPort: 3130
+              exposure: public
+              protocol: http
+              attributes:
+                type: ide-dev
+                discoverable: false
+                urlRewriteSupported: true
+            - name: theia-redirect-1
+              targetPort: 13131
+              exposure: public
+              protocol: http
+              attributes:
+                discoverable: false
+                urlRewriteSupported: true
+            - name: theia-redirect-2
+              targetPort: 13132
+              exposure: public
+              protocol: http
+              attributes:
+                discoverable: false
+                urlRewriteSupported: true
+            - name: theia-redirect-3
+              targetPort: 13133
+              exposure: public
+              protocol: http
+              attributes:
+                discoverable: false
+                urlRewriteSupported: true
         attributes:
           app.kubernetes.io/component: che-theia
           app.kubernetes.io/part-of: che-theia.eclipse.org
           ports:
             - exposedPort: 3100
+            - exposedPort: 3130
+            - exposedPort: 13131
+            - exposedPort: 13132
+            - exposedPort: 13133
       - name: plugins
         volume: {}
       - name: theia-local

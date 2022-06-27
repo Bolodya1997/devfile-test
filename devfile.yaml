@@ -48,7 +48,7 @@ attributes:
           mountSources: true
           memoryLimit: 512M
           cpuLimit: 1500m
-          cpuRequest: 100m
+          cpuRequest: 300m
           endpoints:
             - name: theia
               exposure: public

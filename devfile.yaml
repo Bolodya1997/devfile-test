@@ -34,7 +34,7 @@ attributes:
     components:
       - name: theia-ide
         container:
-          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-31'
+          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-32'
           env:
             - name: THEIA_PLUGINS
               value: 'local-dir:///plugins'

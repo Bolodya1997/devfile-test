@@ -25,7 +25,7 @@ attributes:
             USER_DIR=/opt/app-root/src/.theia;
             if [[ ! -e "${USER_DIR}/.settings.json" ]]; then
               echo "{\"debug.internalConsoleOptions\": \"neverOpen\",\"python.linting.pylintEnabled\": true,\"robot.python.executable\": \"/opt/app-root/bin/python\"}" > "${USER_DIR}/default-settings.json";
-              cat "${USER_DIR}/default-settings.json" "${USER_DIR}/settings.json" > "${USER_DIR}/.settings.json";
+              cat "${USER_DIR}/default-settings.json" "${USER_DIR}/settings.json" | jq add > "${USER_DIR}/.settings.json";
               cp "${USER_DIR}/.settings.json" "${USER_DIR}/settings.json";
             fi
             '

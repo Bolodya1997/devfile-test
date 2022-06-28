@@ -21,11 +21,13 @@ attributes:
         exec:
           component: theia-ide
           commandLine: |
-            ls /opt/app-root/src/.theia/settings.json || echo '{
-              "debug.internalConsoleOptions": "neverOpen",
-              "python.linting.pylintEnabled": true,
-              "robot.python.executable": "/opt/app-root/bin/python"
-            }' > /opt/app-root/src/.theia/settings.json
+            bash -c '
+            USER_DIR=/opt/app-root/src/.theia;
+            if [[ ! -e "${USER_DIR}/.settings.json" ]]; then
+              jq ". += {\"debug.internalConsoleOptions\": \"neverOpen\",\"python.linting.pylintEnabled\": true,\"robot.python.executable\": \"/opt/app-root/bin/python\"}" "${USER_DIR}/settings.json" > "${USER_DIR}/.settings.json";
+              cp "${USER_DIR}/.settings.json" "${USER_DIR}/settings.json";
+            fi
+            '
     events:
       preStart:
         - init-remote-runtime-injector

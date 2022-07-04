@@ -112,6 +112,7 @@ attributes:
                 discoverable: false
                 urlRewriteSupported: true
         attributes:
+          che-theia.eclipse.org/dev-container: true
           app.kubernetes.io/component: che-theia
           app.kubernetes.io/part-of: che-theia.eclipse.org
           ports:
@@ -124,7 +125,6 @@ attributes:
             robot.python.executable: /opt/app-root/bin/python
             python.linting.pylintEnabled: true
             python.defaultInterpreterPath: /opt/app-root/bin/python
-          che-theia.eclipse.org/dev-container: true
       - name: plugins
         volume: {}
       - name: theia-local

@@ -7,6 +7,13 @@ projects:
     git:
       remotes:
         origin: https://github.com/robotframework/RobotDemo.git
+components:
+  - name: dev-container
+    container:
+      image: ubuntu:latest
+      memoryLimit: 512M
+      mountSources: true
+      sourceMapping: /projects
 attributes:
   che-editor.yaml: |
     schemaVersion: 2.1.0
@@ -101,7 +108,6 @@ attributes:
                 discoverable: false
                 urlRewriteSupported: true
         attributes:
-          che-theia.eclipse.org/dev-container: true
           app.kubernetes.io/component: che-theia
           app.kubernetes.io/part-of: che-theia.eclipse.org
           ports:

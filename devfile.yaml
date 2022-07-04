@@ -124,7 +124,7 @@ attributes:
             robot.python.executable: /opt/app-root/bin/python
             python.linting.pylintEnabled: true
             python.defaultInterpreterPath: /opt/app-root/bin/python
-          che-theia/eclipse/org/dev-container: true
+          che-theia.eclipse.org/dev-container: true
       - name: plugins
         volume: {}
       - name: theia-local

@@ -1,15 +1,14 @@
 schemaVersion: 2.1.0
 metadata:
-  name: test
   version: 2.1.0
+  name: test-3
 projects:
-  - git:
+  - name: robot-demo
+    git:
       remotes:
-        origin: 'https://github.com/robotframework/RobotDemo.git'
-    name: robot-demo
-commands: []
+        origin: https://github.com/robotframework/RobotDemo.git
 attributes:
-  'che-editor.yaml': |
+  che-editor.yaml: |
     schemaVersion: 2.1.0
     metadata:
       name: velocity-ide
@@ -21,14 +20,11 @@ attributes:
         exec:
           component: theia-ide
           commandLine: |
-            bash -c '
-            USER_DIR=/opt/app-root/src/.theia;
-            if [[ ! -e "${USER_DIR}/.settings.json" ]]; then
-              echo "{\"debug.internalConsoleOptions\": \"neverOpen\",\"python.linting.pylintEnabled\": true,\"robot.python.executable\": \"/opt/app-root/bin/python\"}" > "${USER_DIR}/default-settings.json";
-              cat "${USER_DIR}/default-settings.json" "${USER_DIR}/settings.json" | jq add > "${USER_DIR}/.settings.json";
-              cp "${USER_DIR}/.settings.json" "${USER_DIR}/settings.json";
-            fi
-            '
+            ls /opt/app-root/src/.theia/settings.json || echo '{
+              "debug.internalConsoleOptions": "neverOpen",
+              "python.linting.pylintEnabled": true,
+              "python.defaultInterpreterPath": "/opt/app-root/bin/python"
+            }' > /opt/app-root/src/.theia/settings.json
     events:
       preStart:
         - init-remote-runtime-injector
@@ -37,10 +33,11 @@ attributes:
     components:
       - name: theia-ide
         container:
-          image: 'artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:che-35'
+          image: >-
+            artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:chmod-10
           env:
             - name: THEIA_PLUGINS
-              value: 'local-dir:///plugins'
+              value: local-dir:///plugins
             - name: IDE_FLEXLM_LICENSE_SERVER
               value: 27000@englshost.spirenteng.com
           volumeMounts:
@@ -51,7 +48,7 @@ attributes:
           mountSources: true
           memoryLimit: 512M
           cpuLimit: 1500m
-          cpuRequest: 300m
+          cpuRequest: 100m
           endpoints:
             - name: theia
               exposure: public
@@ -123,16 +120,17 @@ attributes:
             - exposedPort: 13131
             - exposedPort: 13132
             - exposedPort: 13133
+          che-theia.eclipse.org/vscode-preferences:
+            robot.python.executable: /opt/app-root/bin/python
+            python.linting.pylintEnabled: true
+            python.defaultInterpreterPath: /opt/app-root/bin/python
       - name: plugins
         volume: {}
       - name: theia-local
         volume: {}
       - name: che-machine-exec
         container:
-          image: 'quay.io/eclipse/che-machine-exec:next'
-          env:
-            - name: LOG_LEVEL
-              value: DEBUG
+          image: quay.io/eclipse/che-machine-exec:next
           memoryLimit: 128Mi
           memoryRequest: 32Mi
           cpuLimit: 500m
@@ -140,9 +138,9 @@ attributes:
           command:
             - /go/bin/che-machine-exec
             - '--url'
-            - '127.0.0.1:3333'
+            - 127.0.0.1:3333
             - '--idle-timeout'
-            - '15m'
+            - 15m
           endpoints:
             - name: terminal
               targetPort: 3333
@@ -164,7 +162,7 @@ attributes:
           app.kubernetes.io/component: remote-runtime-injector
           app.kubernetes.io/part-of: che-theia.eclipse.org
         container:
-          image: 'quay.io/eclipse/che-theia-endpoint-runtime-binary:next'
+          image: quay.io/eclipse/che-theia-endpoint-runtime-binary:next
           memoryLimit: 128Mi
           memoryRequest: 32Mi
           cpuLimit: 500m

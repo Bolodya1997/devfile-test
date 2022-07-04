@@ -14,6 +14,7 @@ components:
       memoryLimit: 512M
       mountSources: true
       sourceMapping: /projects
+      command: ['bash', '-c', 'sleep 10m']
 attributes:
   che-editor.yaml: |
     schemaVersion: 2.1.0

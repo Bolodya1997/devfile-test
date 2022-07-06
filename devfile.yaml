@@ -31,7 +31,7 @@ attributes:
       - name: theia-ide
         container:
           image: >-
-            artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:chmod-10
+            artifactory-ito.spirenteng.com/velocity-docker-builds/ide/web-ide/velocity-ide:demo-1
           env:
             - name: THEIA_PLUGINS
               value: local-dir:///plugins
